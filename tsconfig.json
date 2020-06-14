@@ -1,0 +1,40 @@
+{
+  "include": [
+    "src",
+    "server",
+    "types-custom",
+    "webpack-custom"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    // @docs http://json.schemastore.org/tsconfig
+
+    "jsx": "react",
+    "outDir": "build",
+    "target": "esnext",
+    "module": "esnext",
+    "allowJs": true,
+    "baseUrl": ".",
+    "checkJs": false,
+    "sourceMap": false,
+    "skipLibCheck": true,
+    "declaration": false,
+    "declarationMap": false,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "*": [
+        "*",
+        "src/*",
+        "server/*",
+        "types-custom/*"
+      ]
+    }
+  }
+}

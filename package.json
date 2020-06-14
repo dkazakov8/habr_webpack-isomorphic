@@ -1,0 +1,72 @@
+{
+  "name": "habr_webpack-isomorphic",
+  "version": "1.0.0",
+  "description": "Example of Webpack parallel build",
+  "author": "Dmitry Kazakov",
+  "license": "MIT",
+  "scripts": {
+    "update": "yarn install && yarn add --dev file:./eslint-custom && yarn add --dev file:./types-custom && yarn add --dev file:./webpack-custom && yarn add file:./server",
+    "dev": "better-npm-run -s dev",
+    "build": "better-npm-run build",
+    "start": "better-npm-run start",
+    "analyze:js": "eslint --ignore-path .formatignore --ext \".js,.ts,.tsx\" -c ./eslint.config.js ./",
+    "analyze:style": "stylelint --ignore-path .formatignore --config ./stylelint.config.js \"**/*.scss\"",
+    "format:js": "eslint --ignore-path .formatignore --ext \".js,.ts,.tsx\" -c ./eslint.config.js --fix",
+    "format:style": "stylelint --ignore-path .formatignore --config ./stylelint.config.js --fix",
+    "check-types": "tsc --project tsconfig.json --noEmit"
+  },
+  "betterScripts": {
+    "dev": {
+      "command": "better-npm-run -s build",
+      "env": {
+        "START_SERVER_AFTER_BUILD": true
+      }
+    },
+    "build": {
+      "command": "babel-node --extensions .ts,.tsx ./webpack-custom/webpackBuider.ts"
+    },
+    "reload-browser": {
+      "command": "babel-node --extensions .ts,.tsx ./server/watchServer.ts"
+    },
+    "start": {
+      "command": "nodemon -q ./build/server.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 ChromeAndroid versions",
+    "last 2 FirefoxAndroid versions",
+    "last 2 Firefox versions",
+    "Firefox ESR",
+    "last 2 Safari versions",
+    "iOS >= 11",
+    "last 2 Edge versions",
+    "last 2 Opera versions"
+  ],
+  "dependencies": {
+    "better-npm-run": "0.1.1",
+    "classnames": "2.2.6",
+    "core-js": "3.6.5",
+    "lodash": "4.17.15",
+    "nodemon": "2.0.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "server": "file:./server"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.10.1",
+    "@babel/core": "7.10.2",
+    "@babel/node": "7.10.1",
+    "eslint-custom": "file:./eslint-custom",
+    "husky": "4.2.5",
+    "lint-staged": "10.2.10",
+    "types-custom": "file:./types-custom",
+    "typescript": "3.9.5",
+    "webpack-custom": "file:./webpack-custom"
+  }
+}

@@ -1,0 +1,16 @@
+@import "reset.scss";
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap&subset=cyrillic,cyrillic-ext");
+
+body {
+  font-family: "Roboto", Tahoma, sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+* {
+  outline: none;
+}
+
+p {
+  margin-bottom: 15px;
+}
